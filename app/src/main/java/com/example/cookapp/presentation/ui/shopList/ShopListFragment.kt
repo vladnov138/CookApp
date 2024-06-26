@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookapp.R
 import com.example.cookapp.databinding.FragmentShoplistBinding
 import com.example.cookapp.presentation.ShopListAdapter
+import com.example.cookapp.presentation.ui.shopItem.ShopItemFragment
 
 class ShopListFragment : Fragment() {
 
@@ -64,6 +67,7 @@ class ShopListFragment : Fragment() {
             )
         }
         setupSwipeListener(binding.rvShopList)
+        setupClickListener()
     }
 
     private fun setupSwipeListener(rvShopList: RecyclerView) {
@@ -87,5 +91,12 @@ class ShopListFragment : Fragment() {
         }
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(rvShopList)
+    }
+
+    private fun setupClickListener() {
+        shopListAdapter.onShopItemClickListener = {
+            val action = ShopListFragmentDirections.actionNavigationShoplistToShopItemFragment()
+            findNavController().navigate(action)
+        }
     }
 }

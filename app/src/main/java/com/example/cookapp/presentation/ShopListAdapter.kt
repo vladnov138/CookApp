@@ -17,6 +17,9 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
         const val MAX_POOL_SIZE = 15
     }
 
+    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
+    var onShopItemClickListener: ((ShopItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
         val layout = when(viewType) {
             VIEW_TYPE_BOUGHT -> R.layout.item_shop_bought
@@ -44,5 +47,12 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
         val item = getItem(position)
         holder.tvName.text = item.name
         holder.tvNum.text = item.count.toString()
+        holder.v.setOnLongClickListener {
+            onShopItemLongClickListener?.invoke(item)
+            true
+        }
+        holder.v.setOnClickListener {
+            onShopItemClickListener?.invoke(item)
+        }
     }
 }

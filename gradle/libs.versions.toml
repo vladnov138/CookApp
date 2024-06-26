@@ -29,4 +29,5 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#androidx-navigation-saveargs = { id = "androidx.navigation.safeargs.kotlin", version.ref="2.5.3" }
 

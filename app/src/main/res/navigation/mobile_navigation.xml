@@ -3,23 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/shopListFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/shopListFragment"
         android:name="com.example.cookapp.presentation.ui.shopList.ShopListFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_shoplist" />
+        tools:layout="@layout/fragment_shoplist">
+        <action
+            android:id="@+id/action_navigation_shoplist_to_shopItemFragment"
+            app:destination="@id/shopItemFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_storelist"
         android:name="com.example.cookapp.presentation.ui.store.StoreFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_store" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_recipes"
         android:name="com.example.cookapp.presentation.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/shopItemFragment"
+        android:name="com.example.cookapp.presentation.ui.shopItem.ShopItemFragment"
+        android:label="ShopItemFragment" >
+        <action
+            android:id="@+id/action_shopItemFragment_to_shopListFragment"
+            app:destination="@id/shopListFragment" />
+    </fragment>
 </navigation>

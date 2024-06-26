@@ -1,6 +1,7 @@
 package com.example.cookapp
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cookapp.databinding.ActivityMainBinding
 import com.example.cookapp.presentation.MainViewModel
-import com.example.cookapp.presentation.ShopListAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,10 +32,23 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.shopListFragment, R.id.navigation_storelist, R.id.navigation_recipes
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.shopItemFragment -> binding.navView.visibility = View.GONE
+                else -> binding.navView.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
