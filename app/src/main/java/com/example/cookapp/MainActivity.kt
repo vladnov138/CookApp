@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cookapp.databinding.ActivityMainBinding
 import com.example.cookapp.presentation.MainViewModel
+import com.example.cookapp.presentation.ShopListAdapter
 
 class MainActivity : AppCompatActivity() {
 

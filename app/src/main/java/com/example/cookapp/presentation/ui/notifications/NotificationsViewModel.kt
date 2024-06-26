@@ -1,4 +1,4 @@
-package com.example.cookapp.ui.notifications
+package com.example.cookapp.presentation.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

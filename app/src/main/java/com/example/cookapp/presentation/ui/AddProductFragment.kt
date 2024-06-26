@@ -1,4 +1,4 @@
-package com.example.cookapp.ui
+package com.example.cookapp.presentation.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
