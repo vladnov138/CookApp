@@ -69,6 +69,7 @@ class ShopListFragment : Fragment() {
         }
         setupSwipeListener(binding.rvShopList)
         setupClickListener()
+        setupRadioButtonClickListener()
     }
 
     private fun setupSwipeListener(rvShopList: RecyclerView) {
@@ -102,6 +103,12 @@ class ShopListFragment : Fragment() {
             )
             action.arguments.putString(ShopItemFragment.SCREEN_MODE, ShopItemFragment.MODE_EDIT)
             findNavController().navigate(action)
+        }
+    }
+
+    private fun setupRadioButtonClickListener() {
+        shopListAdapter.onRadioButtonClickListener = {
+            viewModel.changeShopItemState(it)
         }
     }
 }

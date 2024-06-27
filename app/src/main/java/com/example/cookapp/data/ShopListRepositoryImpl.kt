@@ -1,54 +1,38 @@
 package com.example.cookapp.data
 
+import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.map
 import com.example.cookapp.domain.shopItem.ShopItem
 import com.example.cookapp.domain.shopItem.ShopListRepository
 
-object ShopListRepositoryImpl : ShopListRepository {
+class ShopListRepositoryImpl(
+    application: Application
+) : ShopListRepository {
 
-    private val shopList = mutableListOf<ShopItem>()
-    private val shopListLD = MutableLiveData<List<ShopItem>>()
+    private val shopListDao = AppDatabase.getInstance(application).shopListDao()
+    private val mapper = ShopListMapper() // change it to di
 
-    private var autoIncrementId = 0
+    override suspend fun addShopItem(shopItem: ShopItem) {
+        shopListDao.addShopItem(mapper.mapEntityToDbModel(shopItem))
+    }
 
-    init {
-        for (i in 0 until 10) {
-            val item = ShopItem("Name $i", i.toDouble(), "kg")
-            addShopItem(item)
+    override suspend fun getShopItem(id: Int): ShopItem {
+        val dbModel = shopListDao.getShopItem(id)
+        return mapper.mapDbModelToEntity(dbModel)
+    }
+
+    override fun getShopList(isBought: Boolean): LiveData<List<ShopItem>> =
+        shopListDao.getShopList(isBought).map {
+            mapper.mapListDbModelToListEntity(it)
         }
+
+    override suspend fun editShopItem(shopItem: ShopItem) {
+        shopListDao.addShopItem(mapper.mapEntityToDbModel(shopItem))
     }
 
-    override fun addShopItem(shopItem: ShopItem) {
-        if (shopItem.id == ShopItem.DEFAULT_VALUE) {
-            shopItem.id = autoIncrementId++
-        }
-        shopList.add(shopItem)
-        updateList()
-    }
-
-    override fun getShopItem(id: Int): ShopItem {
-        return shopList.find {
-            elem -> elem.id == id
-        } ?: throw RuntimeException("Element with id $id not found")
-    }
-
-    override fun getShopList(): LiveData<List<ShopItem>> {
-        return shopListLD
-    }
-
-    override fun editShopItem(shopItem: ShopItem) {
-        val oldShopItem = getShopItem(shopItem.id)
-        deleteShopItem(oldShopItem)
-        shopList.add(shopItem)
-    }
-
-    override fun deleteShopItem(shopItem: ShopItem) {
-        shopList.remove(shopItem)
-        updateList()
-    }
-
-    private fun updateList() {
-        shopListLD.value = shopList.toList()
+    override suspend fun deleteShopItem(shopItem: ShopItem) {
+        shopListDao.deleteShopItem(shopItem.id)
     }
 }

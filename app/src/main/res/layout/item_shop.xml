@@ -18,7 +18,16 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
+
+        <RadioButton
+            android:id="@+id/radiobtn"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:padding="2dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:buttonTint="@color/white"/>
 
         <TextView
             android:id="@+id/name"

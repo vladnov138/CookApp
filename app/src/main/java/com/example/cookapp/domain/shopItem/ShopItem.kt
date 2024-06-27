@@ -9,6 +9,6 @@ data class ShopItem(
 ) {
 
     companion object {
-        const val DEFAULT_VALUE = -1
+        const val DEFAULT_VALUE = 0
     }
 }

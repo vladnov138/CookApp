@@ -17,6 +17,7 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
 
     var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
     var onShopItemClickListener: ((ShopItem) -> Unit)? = null
+    var onRadioButtonClickListener: ((ShopItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
         val layout = when(viewType) {
@@ -50,6 +51,9 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
         }
         holder.v.setOnClickListener {
             onShopItemClickListener?.invoke(item)
+        }
+        if (!item.isBought) {
+            holder.bind(item, onRadioButtonClickListener)
         }
     }
 }
