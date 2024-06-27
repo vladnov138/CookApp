@@ -1,15 +1,6 @@
 package com.example.cookapp.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cookapp.data.ShopListRepositoryImpl
-import com.example.cookapp.domain.AddShopItemUseCase
-import com.example.cookapp.domain.DeleteShopItemUseCase
-import com.example.cookapp.domain.EditShopItemUseCase
-import com.example.cookapp.domain.GetShopItemUseCase
-import com.example.cookapp.domain.GetShopListUseCase
-import com.example.cookapp.domain.ShopItem
 
 class MainViewModel : ViewModel() {
 

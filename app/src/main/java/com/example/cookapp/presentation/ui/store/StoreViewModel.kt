@@ -2,12 +2,12 @@ package com.example.cookapp.presentation.ui.store
 
 import androidx.lifecycle.ViewModel
 import com.example.cookapp.data.StoreListRepositoryImpl
-import com.example.cookapp.domain.AddStoreItemUseCase
-import com.example.cookapp.domain.DeleteStoreItemUseCase
-import com.example.cookapp.domain.EditStoreItemUseCase
-import com.example.cookapp.domain.GetStoreItemUseCase
-import com.example.cookapp.domain.GetStoreListUseCase
-import com.example.cookapp.domain.ShopItem
+import com.example.cookapp.domain.storeItem.AddStoreItemUseCase
+import com.example.cookapp.domain.storeItem.DeleteStoreItemUseCase
+import com.example.cookapp.domain.storeItem.EditStoreItemUseCase
+import com.example.cookapp.domain.storeItem.GetStoreItemUseCase
+import com.example.cookapp.domain.storeItem.GetStoreListUseCase
+import com.example.cookapp.domain.shopItem.ShopItem
 
 class StoreViewModel : ViewModel() {
 

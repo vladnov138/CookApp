@@ -1,4 +1,6 @@
-package com.example.cookapp.domain
+package com.example.cookapp.domain.storeItem
+
+import com.example.cookapp.domain.shopItem.ShopItem
 
 class AddStoreItemUseCase(private val storeRepository: StoreListRepository) {
 

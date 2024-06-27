@@ -1,4 +1,4 @@
-package com.example.cookapp.domain
+package com.example.cookapp.domain.shopItem
 
 class GetShopItemUseCase(private val shopListRepository: ShopListRepository) {
 

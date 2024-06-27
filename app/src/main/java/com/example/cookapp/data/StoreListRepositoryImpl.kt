@@ -2,8 +2,8 @@ package com.example.cookapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.cookapp.domain.ShopItem
-import com.example.cookapp.domain.StoreListRepository
+import com.example.cookapp.domain.shopItem.ShopItem
+import com.example.cookapp.domain.storeItem.StoreListRepository
 
 object StoreListRepositoryImpl : StoreListRepository {
 

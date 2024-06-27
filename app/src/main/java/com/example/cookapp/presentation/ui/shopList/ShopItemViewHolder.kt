@@ -1,4 +1,4 @@
-package com.example.cookapp.presentation
+package com.example.cookapp.presentation.ui.shopList
 
 import android.view.View
 import android.widget.TextView

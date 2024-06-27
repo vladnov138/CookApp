@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cookapp.data.ShopListRepositoryImpl
-import com.example.cookapp.domain.AddShopItemUseCase
-import com.example.cookapp.domain.EditShopItemUseCase
-import com.example.cookapp.domain.GetShopItemUseCase
-import com.example.cookapp.domain.ShopItem
+import com.example.cookapp.domain.shopItem.AddShopItemUseCase
+import com.example.cookapp.domain.shopItem.EditShopItemUseCase
+import com.example.cookapp.domain.shopItem.GetShopItemUseCase
+import com.example.cookapp.domain.shopItem.ShopItem
 
 class ShopItemViewModel : ViewModel() {
 

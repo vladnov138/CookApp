@@ -1,7 +1,7 @@
-package com.example.cookapp.presentation
+package com.example.cookapp.presentation.ui.shopList
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.cookapp.domain.ShopItem
+import com.example.cookapp.domain.shopItem.ShopItem
 
 class ShopItemDiffCallback: DiffUtil.ItemCallback<ShopItem>() {
 

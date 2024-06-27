@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookapp.databinding.FragmentStoreBinding
-import com.example.cookapp.presentation.ShopListAdapter
+import com.example.cookapp.presentation.ui.shopList.ShopListAdapter
 
 class StoreFragment : Fragment() {
 

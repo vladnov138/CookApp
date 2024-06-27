@@ -1,4 +1,4 @@
-package com.example.cookapp
+package com.example.cookapp.presentation
 
 import android.os.Bundle
 import android.view.View
@@ -10,8 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.cookapp.R
 import com.example.cookapp.databinding.ActivityMainBinding
-import com.example.cookapp.presentation.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,12 +1,10 @@
-package com.example.cookapp.presentation
+package com.example.cookapp.presentation.ui.shopList
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import com.example.cookapp.R
-import com.example.cookapp.domain.ShopItem
+import com.example.cookapp.domain.shopItem.ShopItem
 
 class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCallback()) {
 
@@ -26,7 +24,6 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffCa
             VIEW_TYPE_NOT_BOUGHT -> R.layout.item_shop
             else -> throw RuntimeException("Unknown view type: $viewType")
         }
-        Log.d("test", layout.toString())
         val view = LayoutInflater.from(parent.context).inflate(
             layout,
             parent,
