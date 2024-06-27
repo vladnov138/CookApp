@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cookapp.databinding.FragmentShoplistBinding
+import com.example.cookapp.presentation.ui.shopItem.ShopItemFragment
 
 class ShopListFragment : Fragment() {
 
@@ -40,7 +41,12 @@ class ShopListFragment : Fragment() {
         viewModel.shopList.observe(viewLifecycleOwner) {
             shopListAdapter.submitList(it)
         }
-
+        binding.floatingActionButton.setOnClickListener {
+            val action = ShopListFragmentDirections.actionNavigationShoplistToShopItemFragment(
+                screenMode = ShopItemFragment.MODE_ADD
+            )
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {
@@ -90,7 +96,11 @@ class ShopListFragment : Fragment() {
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            val action = ShopListFragmentDirections.actionNavigationShoplistToShopItemFragment()
+            val action = ShopListFragmentDirections.actionNavigationShoplistToShopItemFragment(
+                screenMode = ShopItemFragment.MODE_EDIT,
+                shopItemId = it.id
+            )
+            action.arguments.putString(ShopItemFragment.SCREEN_MODE, ShopItemFragment.MODE_EDIT)
             findNavController().navigate(action)
         }
     }

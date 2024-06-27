@@ -1,5 +1,6 @@
 package com.example.cookapp.presentation.ui.shopItem
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -55,7 +56,7 @@ class ShopItemViewModel : ViewModel() {
         val fieldsValid = validateInput(name, count)
         if (fieldsValid) {
             _shopItem.value?.let {
-                val item = it.copy(name = name, count = count.toDouble())
+                val item = it.copy(name = name, count = count)
                 editShopItemUseCase.editShopItem(item)
                 finishWork()
             }
@@ -66,21 +67,21 @@ class ShopItemViewModel : ViewModel() {
         return inputName?.trim() ?: ""
     }
 
-    private fun parseCount(inputCount: String?): Int {
+    private fun parseCount(inputCount: String?): Double {
         return try {
-            inputCount?.trim()?.toInt() ?: 0
+            inputCount?.trim()?.toDouble() ?: 0.0
         } catch (e: Exception) {
-            0
+            0.0
         }
     }
 
-    private fun validateInput(name: String, count: Int): Boolean {
+    private fun validateInput(name: String, count: Double): Boolean {
         var result = true
         if (name.isBlank()) {
             _errorInputName.value = true
             result = false
         }
-        if (count <= 0) {
+        if (count <= 0.0) {
             _errorInputCount.value = true
             result = false
         }

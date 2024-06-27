@@ -12,7 +12,15 @@
         tools:layout="@layout/fragment_shoplist">
         <action
             android:id="@+id/action_navigation_shoplist_to_shopItemFragment"
-            app:destination="@id/shopItemFragment" />
+            app:destination="@id/shopItemFragment">
+            <argument
+                android:name="screen_mode"
+                app:argType="string" />
+            <argument
+                android:name="shop_item_id"
+                app:argType="integer"
+                android:defaultValue="-1" />
+        </action>
     </fragment>
 
     <fragment
